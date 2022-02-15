@@ -9,65 +9,116 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="tableView.css">
+    <link rel="stylesheet" href="closeView.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/papaparse@5.3.1/papaparse.min.js"></script>
+    <!-- Data first -->
+    <script src="datahandling/data_handler.js"></script>
+    <script src="ui/ui_createTableInformation.js"></script>
+    <!-- UI Stuff now -->
+    <script src="ui/ui_displayPerson.js"></script>
     <title>Title</title>
 </head>
 
 <body>
     <script type='text/javascript'>
-        let raw;
-        Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vT1nQ50IQI3hOB23JrU4bOPRpVkZ9a602GyLYRYOBX2O336QYncYyvaC7bNAz3R9_YqE2_Ucri2dW3D/pub?gid=0&single=true&output=csv", {
-            download: true,
-            header: true,
-            complete: function(results) {
-                console.log(results);
-                raw = results;
-                setupRow(results)
-            }
-
-
-        });
-
-        function setupRow(_r) {
-            let data = _r.data;
-            for (var i = 0; i < data.length; i++) {
-                let rows = ""
-                let surname = data[i].SURNAME
-                let frname = data[i].FIRST
-                let title = data[i].TITLE
-                let academic = data[i].ACADEMIC
-                let arts = data[i].ARTS
-                let sports = data[i].SPORTS
-                let other = data[i].OTHER
-                let notes = data[i].NOTES
-
-                rows += "<tr><td>" + surname + "</td><td>" + frname + "</td><td>" + title + "</td><td>" + academic + "</td><td>" + arts + "</td><td>" + sports + "</td><td>" + other + "</td><td>" + notes + "</td></tr>";
-                $(rows).appendTo("#myTable tbody");
-
-            }
-        }
     </script>
+    <div id="closeUpView">
+        <div id="image">
+            <img id="knownFor" src=" https://live.staticflickr.com/1669/25276172839_01a7d2d49d_b.jpg " alt=" " class="border border-5 ">
+        </div>
+        <div id="content">
+            <h2><span id="name"></span></h2>
+            <h5><span id="attended"></span></h5>
+            <h5><span id="title"></span></h5>
+            <h6><span id="knownfor"></span></h6>
+            <p><span id="contents"></span></p>
+        </div>
 
-    <table class="table" id="myTable">
-        <thead>
-            <tr>
-                <th>Surname</th>
-                <th>FirstName</th>
-                <th>Title</th>
-                <th>Academic</th>
-                <th>Arts</th>
-                <th>Sports</th>
-                <th>Other</th>
-                <th>Notes</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+    </div>
+    <div id="viewByArea " style="display: none; ">
+        <ul class="nav nav-pills mb-3 " id="pills-tab " role="tablist ">
+            <li class="nav-item " role="presentation ">
+                <button class="nav-link active " id="pills-sports-tab " data-bs-toggle="pill " data-bs-target="#pills-sports " type="button " role="tab " aria-controls="pills-sports " aria-selected="true ">Sports</button>
+            </li>
+            <li class="nav-item " role="presentation ">
+                <button class="nav-link " id="pills-academ-tab " data-bs-toggle="pill " data-bs-target="#pills-academ " type="button " role="tab " aria-controls="pills-academ " aria-selected="false ">Academic</button>
+            </li>
+            <li class="nav-item " role="presentation ">
+                <button class="nav-link " id="pills-arts-tab " data-bs-toggle="pill " data-bs-target="#pills-arts " type="button " role="tab " aria-controls="pills-arts " aria-selected="false ">Arts</button>
+            </li>
+            <li class="nav-item " role="presentation ">
+                <button class="nav-link " id="pills-other-tab " data-bs-toggle="pill " data-bs-target="#pills-other " type="button " role="tab " aria-controls="pills-other " aria-selected="false ">Other</button>
+            </li>
+        </ul>
+        <div class="tab-content " id="pills-tabContent ">
+            <div class="tab-pane fade show active " id="pills-sports " role="tabpanel " aria-labelledby="pills-sports-tab ">
+                <table class="table " id="sportsTable ">
+                    <thead>
+                        <tr>
+                            <th>Surname</th>
+                            <th>FirstName</th>
+                            <th>Title</th>
+                            <th>Known for</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade " id="pills-academ " role="tabpanel " aria-labelledby="pills-academ-tab ">
+                <table class="table " id="acamTable ">
+                    <thead>
+                        <tr>
+                            <th>Surname</th>
+                            <th>FirstName</th>
+                            <th>Title</th>
+                            <th>Known for</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade " id="pills-arts " role="tabpanel " aria-labelledby="pills-arts-tab ">
+                <table class="table " id="artsTable ">
+                    <thead>
+                        <tr>
+                            <th>Surname</th>
+                            <th>FirstName</th>
+                            <th>Title</th>
+                            <th>Known for</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade " id="pills-other " role="tabpanel " aria-labelledby="pills-other-tab ">
+                <table class="table " id="otherTable ">
+                    <thead>
+                        <tr>
+                            <th>Surname</th>
+                            <th>FirstName</th>
+                            <th>Title</th>
+                            <th>Known for</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js "></script>
 </body>
 
 </html>

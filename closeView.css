@@ -1,0 +1,19 @@
+#closeUpView {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* margin-left: 200px; */
+    /* box-sizing: border-box; */
+    /* align-items: center; */
+    grid-auto-rows: auto 1fr;
+    /* margin-right: 0%; */
+    grid-gap: 0%;
+}
+
+#closeUpView img {
+    width: 60%;
+    margin-left: 20%;
+}
+
+#closeUpView #content {
+    margin-top: 30%;
+}
