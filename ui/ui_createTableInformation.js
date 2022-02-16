@@ -18,7 +18,7 @@ function setupRow(_r) {
                 let sports = data[i].SPORTS
                 let notes = data[i].NOTES
 
-                rows += "<tr><td>" + surname + "</td><td>" + frname + "</td><td>" + title + "</td><td>" + sports + "</td><td>" + notes + "</td></tr>";
+                rows += "<tr data-userId='" + i + "'><td>" + surname + "</td><td>" + frname + "</td><td>" + title + "</td><td>" + sports + "</td><td>" + notes + "</td></tr>";
                 $(rows).appendTo("#sportsTable tbody");
             }
 
@@ -36,8 +36,9 @@ function setupRow(_r) {
                 let title = data[i].TITLE
                 let academic = data[i].ACADEMIC
                 let notes = data[i].NOTES
+                let dt = data[i]
 
-                rows += "<tr><td>" + surname + "</td><td>" + frname + "</td><td>" + title + "</td><td>" + academic + "</td><td>" + notes + "</td></tr>";
+                rows += "<tr data-userId='" + i + "'><td>" + surname + "</td><td>" + frname + "</td><td>" + title + "</td><td>" + academic + "</td><td>" + notes + "</td></tr>";
                 $(rows).appendTo("#acamTable tbody");
             }
 
@@ -56,7 +57,7 @@ function setupRow(_r) {
                 let arts = data[i].ARTS
                 let notes = data[i].NOTES
 
-                rows += "<tr><td>" + surname + "</td><td>" + frname + "</td><td>" + title + "</td><td>" + arts + "</td><td>" + notes + "</td></tr>";
+                rows += "<tr data-userId='" + i + "'><td>" + surname + "</td><td>" + frname + "</td><td>" + title + "</td><td>" + arts + "</td><td>" + notes + "</td></tr>";
                 $(rows).appendTo("#artsTable tbody");
             }
 
@@ -75,10 +76,32 @@ function setupRow(_r) {
                 let other = data[i].OTHER
                 let notes = data[i].NOTES
 
-                rows += "<tr onclick='displayPeople.load(" + data[i] + ")><td>" + surname + "</td><td>" + frname + "</td><td>" + title + "</td><td>" + other + "</td><td>" + notes + "</td></tr>";
-                $(rows).appendTo('#sportsTable tbody')
+                rows += "<tr data-userId='" + i + "'><td>" + surname + "</td><td>" + frname + "</td><td>" + title + "</td><td>" + other + "</td><td>" + notes + "</td></tr>";
+                $(rows).appendTo('#otherTable tbody')
             }
 
         }
     }
+
+    $("#sportsTable tbody").on("click", "tr", function() {
+        let posinarray = $(this).attr("data-userId")
+        displayPeople.load(data[posinarray], "sports")
+    });
+    $("#acamTable tbody").on("click", "tr", function() {
+        let posinarray = $(this).attr("data-userId")
+        displayPeople.load(data[posinarray], "academic")
+    });
+    $("#artsTable tbody").on("click", "tr", function() {
+        let posinarray = $(this).attr("data-userId")
+        displayPeople.load(data[posinarray], "arts")
+
+        console.log(data[posinarray])
+    });
+    $("#otherTable tbody").on("click", "tr", function() {
+        let posinarray = $(this).attr("data-userId")
+        displayPeople.load(data[posinarray], " ")
+
+        // displayPeople.load(data[posinarray])
+        console.log(data[posinarray])
+    });
 }

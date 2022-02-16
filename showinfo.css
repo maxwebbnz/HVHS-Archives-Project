@@ -1,0 +1,10 @@
+.showInfo {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 4%;
+    display: none;
+}
+
+.showInfo hr {
+    margin-bottom: 5%;
+}

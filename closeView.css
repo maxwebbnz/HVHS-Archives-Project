@@ -8,6 +8,8 @@
     /* margin-right: 0%; */
     grid-gap: 0%;
     margin-left: 10%;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
 
 #closeUpView img {
@@ -25,7 +27,8 @@
 }
 
 .knowMoreInfo {
-    margin-top: 53%;
+    margin-top: 60%;
+    position: sticky;
     width: 80%;
     text-align: center;
 }
