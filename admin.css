@@ -1,0 +1,17 @@
+.adminHeader {
+    margin-top: 2%;
+    margin-left: 4%;
+}
+
+.adminHeader hr {
+    width: 90%;
+}
+
+.homeDisplayedPerson {
+    margin-top: 2%;
+    margin-left: 4%;
+}
+
+.displayedPersonCard {
+    width: 80%;
+}
