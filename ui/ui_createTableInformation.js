@@ -1,6 +1,6 @@
 function setupRow(_r) {
     let data = _r.data;
-
+    console.log(data)
     checkSports()
     checkAcademic()
     checkArts()
@@ -75,8 +75,8 @@ function setupRow(_r) {
                 let other = data[i].OTHER
                 let notes = data[i].NOTES
 
-                rows += "<tr><td>" + surname + "</td><td>" + frname + "</td><td>" + title + "</td><td>" + other + "</td><td>" + notes + "</td></tr>";
-                $(rows).appendTo("#otherTable tbody");
+                rows += "<tr onclick='displayPeople.load(" + data[i] + ")><td>" + surname + "</td><td>" + frname + "</td><td>" + title + "</td><td>" + other + "</td><td>" + notes + "</td></tr>";
+                $(rows).appendTo('#sportsTable tbody')
             }
 
         }

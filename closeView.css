@@ -7,13 +7,31 @@
     grid-auto-rows: auto 1fr;
     /* margin-right: 0%; */
     grid-gap: 0%;
+    margin-left: 10%;
 }
 
 #closeUpView img {
     width: 60%;
-    margin-left: 20%;
 }
 
 #closeUpView #content {
-    margin-top: 30%;
+    margin-top: 10%;
+    width: 80%;
+}
+
+.inline {
+    display: grid;
+    grid-column: 1fr 2fr;
+}
+
+.knowMoreInfo {
+    margin-top: 53%;
+    width: 80%;
+    text-align: center;
+}
+
+.profileImage {
+    margin-bottom: 4%;
+    width: 10px;
+    /* margin: auto; */
 }
