@@ -1,10 +1,11 @@
-let currentPage = 'viewByArea'
+let currentPage = 'home'
 
-let events = {
-    showInfo: function() {
+let ui_events = {
+    display: function(_page) {
         $('#closeView').modal('hide')
         document.getElementById(currentPage).style.display = 'none'
-        document.getElementById('info').style.display = 'block'
+        document.getElementById(_page).style.display = 'block'
+        currentPage = _page
 
     }
 }
