@@ -38,7 +38,7 @@ function searchData(_r) {
 $(document).on('click', '#searchForInfo', function() {
     let valueTaken = document.getElementById('searchbar').value
     console.log(valueTaken)
-    let checkFirst = datas.find(o => o.FIRST === valueTaken);
+    let checkFirst = datas.filter(o => o.FIRST === valueTaken);
     let checkSports = datas.find(o => o.SPORTS === valueTaken);
     let checkSurname = datas.find(o => o.SURNAME === valueTaken);
     let checkNotes = datas.find(o => o.NOTES === valueTaken);

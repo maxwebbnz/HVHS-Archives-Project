@@ -54,7 +54,6 @@ let apiHandler = {
                     document.getElementById('profileImage').src = imgUrl.contentUrl
                     $('#closeView').modal('show')
                     count = 0;
-
                     swal.close()
 
                 } else if (imgUrl.contentUrl.includes(_query)) {
@@ -67,7 +66,6 @@ let apiHandler = {
                     document.getElementById('profileImage').src = imgUrl.contentUrl
                     $('#closeView').modal('show')
                     count = 0;
-
                     swal.close()
 
                 } else if (count > 5) {
@@ -76,8 +74,7 @@ let apiHandler = {
                     $('#closeView').modal('show')
                     count = 0;
                     swal.close()
-
-                } else {
+                } else if (!imgUrl.name.includes(_knf) && !imgUrl.contentUrl.includes(_query) && !imgUrl.name.includes(_query)) {
                     count = count + 1
                     apiHandler.setImage(_query, _knf)
                 }
