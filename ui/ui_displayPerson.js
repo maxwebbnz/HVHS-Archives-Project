@@ -41,7 +41,7 @@ let apiHandler = {
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url);
 
-        xhr.setRequestHeader("Ocp-Apim-Subscription-Key", "d3626fecbca34f5b91a86ea45b4060e1");
+        xhr.setRequestHeader("Ocp-Apim-Subscription-Key", "<ID>");
 
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
